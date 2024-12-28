@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class StageGameManager : MonoBehaviour
 {
     public GameObject stageMenu;
+    public GameObject exitMenu;
     public GameObject gameManagerGameObject;
     public GameObject stageSelectionGameObject;
     public GameObject[] Stage;
@@ -32,7 +33,10 @@ public class StageGameManager : MonoBehaviour
         }
         if (player.exitSelectionBool)
         {
-            Application.Quit();
+            exitMenu.SetActive(true);
+        }else
+        {
+            exitMenu.SetActive(false);
         }
         stageLockAnimator();
     }
@@ -66,5 +70,8 @@ public class StageGameManager : MonoBehaviour
             gameManagerGameObject.SetActive(true);
         }
     }
-
+    public void exitOButton()
+    {
+        Application.Quit();
+    }
 }
