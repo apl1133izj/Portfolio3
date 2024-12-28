@@ -40,7 +40,7 @@ public class StageGameManager : MonoBehaviour
         }
         stageLockAnimator();
     }
-    
+    //스테이지 클리어시 자물쇠 해제 애니메이션
     public void stageLockAnimator()
     {
         if(gameManagers.stageClearUnLock[0] == true && lockAnimatior[0] == false)
@@ -54,12 +54,14 @@ public class StageGameManager : MonoBehaviour
             lockAnimatior[1] = true;
         }
     }
+     //스테이지 1 이동
     public void stage1Button()
     {
         gameManagers.stageSatting = GameManager.StageSatting.stage1;
         stageSelectionGameObject.gameObject.SetActive(false);
         gameManagers.ReStart();
     }
+    //스테이지 2 이동
     public void stage2Button()
     {
         if (gameManagers.stageClearUnLock[0] == true)
@@ -70,6 +72,7 @@ public class StageGameManager : MonoBehaviour
             gameManagerGameObject.SetActive(true);
         }
     }
+    //게임 종료
     public void exitOButton()
     {
         Application.Quit();
