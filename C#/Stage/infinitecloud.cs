@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class infinitecloud : MonoBehaviour
 {
-    public GameObject[] infinitecloudGameObject1;//0¿œπ› ±∏∏ß 1¥¿∏∞±∏∏ß
-    public GameObject[] infinitecloudGameObject2;//0¿œπ› ±∏∏ß 1¥¿∏∞±∏∏ß
+    public GameObject[] infinitecloudGameObject1;//0ÏùºÎ∞ò Íµ¨Î¶Ñ 1ÎäêÎ¶∞Íµ¨Î¶Ñ
+    public GameObject[] infinitecloudGameObject2;//0ÏùºÎ∞ò Íµ¨Î¶Ñ 1ÎäêÎ¶∞Íµ¨Î¶Ñ
     public float cloud1Speed;
     public float cloud1SlowSpeed;
 
