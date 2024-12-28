@@ -13,10 +13,13 @@ public class infinitecloud : MonoBehaviour
     public float cloud2SlowSpeed;
     void Update()
     {
+        //구름 이동
         infinitecloudGameObject1[0].transform.Translate(new Vector2(cloud1Speed * Time.deltaTime,0));
         infinitecloudGameObject1[1].transform.Translate(new Vector2(cloud1SlowSpeed * Time.deltaTime, 0));
         infinitecloudGameObject2[0].transform.Translate(new Vector2(cloud2Speed * Time.deltaTime, 0));
         infinitecloudGameObject2[1].transform.Translate(new Vector2(cloud2SlowSpeed * Time.deltaTime, 0));
+
+        //종료 위치로 갈시 시작 위치로 이동
         if(infinitecloudGameObject1[0].transform.localPosition.x <= -25.71429f)
         {
             infinitecloudGameObject1[0].transform.localPosition = new Vector2(28.2f, 0f);
