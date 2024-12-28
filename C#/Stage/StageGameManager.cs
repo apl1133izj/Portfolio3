@@ -13,7 +13,7 @@ public class StageGameManager : MonoBehaviour
     public bool  StageMapmove;
     GameManager gameManagers;
     public bool[] lockAnimatior;   
-    //Lock¾Ö´Ï¸ŞÀÌ¼Ç(½ºÅ×ÀÌÁö Å¬¸®½Ã ½ºÅ×ÀÌÁö ¼±ÅÃui¿¡¼­ ½ÇÇàµÊ)
+    //Lockì• ë‹ˆë©”ì´ì…˜(ìŠ¤í…Œì´ì§€ í´ë¦¬ì‹œ ìŠ¤í…Œì´ì§€ ì„ íƒuiì—ì„œ ì‹¤í–‰ë¨)
     public Animator[] animator;
     private void Start()
     {
@@ -32,7 +32,7 @@ public class StageGameManager : MonoBehaviour
         }
         if (player.exitSelectionBool)
         {
-
+            Application.Quit();
         }
         stageLockAnimator();
     }
@@ -41,13 +41,11 @@ public class StageGameManager : MonoBehaviour
     {
         if(gameManagers.stageClearUnLock[0] == true && lockAnimatior[0] == false)
         {
-            Debug.Log("?");
             animator[0].enabled = true;
             lockAnimatior[0] = true;
         }
         if (gameManagers.stageClearUnLock[1] == true && lockAnimatior[1] == false)
         {
-            Debug.Log("?");
             animator[1].enabled = true;
             lockAnimatior[1] = true;
         }
@@ -67,48 +65,6 @@ public class StageGameManager : MonoBehaviour
             gameManagers.ReStart();
             gameManagerGameObject.SetActive(true);
         }
-    }
-    public void stage3Button()
-    {
-
-
-    }
-    public void stage4Button()
-    {
-
-
-
-    }
-    public void stage5Button()
-    {
-
-
-    }
-
-    public void stage6Button()
-    {
-
-
-    }
-    public void stage7Button()
-    {
-
-
-    }
-    public void stage8Button()
-    {
-
-
-    }
-    public void stage9Button()
-    {
-
-
-    }
-    public void stage10Button()
-    {
-
-
     }
 
 }
