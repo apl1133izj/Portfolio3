@@ -3,29 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class PlayerStageMap : MonoBehaviour
+public class StageMapPlayer : MonoBehaviour
 {
     public int playerSpeed;
     Vector2 playerPosition;
     public bool keyRight;
     public bool keyLeft;
-    //Á¡ÇÁ 
+    //ì í”„ 
     public Sprite spriteJump;
     public bool jumpBool;
     public int jumpPower;
-    //ÇÃ·¹ÀÌ¾î ¼³Á¤
+    //í”Œë ˆì´ì–´ ì„¤ì •
     new Rigidbody2D rigidbody2D;
     public Animator animator;
-    //¹Ú½º °ü·Ã
+    //ë°•ìŠ¤ ê´€ë ¨
     public bool boxPickingAni;
     public bool boxOn;
     public bool boxThrowing;
     public int boxint;
     GameObject box;
     public GameObject insBox;
-    float throwForce; // ´øÁú ÈûÀÇ Å©±â
-    float throwAngle;// ´øÁú °¢µµ (0~90µµ)
-    //¾ÆÀÌÅÛ
+    float throwForce; // ë˜ì§ˆ í˜ì˜ í¬ê¸°
+    float throwAngle;// ë˜ì§ˆ ê°ë„ (0~90ë„)
+    //ì•„ì´í…œ
     public int jumpCount;
 
     public bool stageSelectionBool;
@@ -68,36 +68,36 @@ public class PlayerStageMap : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) keyLeft = true;
         else keyLeft = false;
 
-        if (keyRight)//¿À¸¥ÂÊ
+        if (keyRight)//ì˜¤ë¥¸ìª½
         {
             transform.Translate(new Vector2(playerSpeed * Time.deltaTime, 0));
             transform.localScale = new Vector3(-1, 1, 1);
-            if (boxOn)//¹Ú½ºµé°í ¶Û°æ¿ì
+            if (boxOn)//ë°•ìŠ¤ë“¤ê³  ë›¸ê²½ìš°
             {
                 animator.SetBool("BoxIdle", false);
                 animator.SetBool("BoxRun", true);
             }
-            else//¹Ú½º ¾øÀÌ ±×³É
+            else//ë°•ìŠ¤ ì—†ì´ ê·¸ëƒ¥
             {
                 animator.SetBool("Run", true);
             }
 
         }
-        else if (keyLeft)//¿ŞÂÊ
+        else if (keyLeft)//ì™¼ìª½
         {
             transform.Translate(new Vector2(-playerSpeed * Time.deltaTime, 0));
             transform.localScale = new Vector3(1, 1, 1);
-            if (boxOn)//¹Ú½ºµé°í ¶Û°æ¿ì
+            if (boxOn)//ë°•ìŠ¤ë“¤ê³  ë›¸ê²½ìš°
             {
                 animator.SetBool("BoxIdle", false);
                 animator.SetBool("BoxRun", true);
             }
-            else//¹Ú½º ¾øÀÌ ±×³É
+            else//ë°•ìŠ¤ ì—†ì´ ê·¸ëƒ¥
             {
                 animator.SetBool("Run", true);
             }
         }
-        else//Å°´©¸£Áö ¾ÈÀº»óÅÂ
+        else//í‚¤ëˆ„ë¥´ì§€ ì•ˆì€ìƒíƒœ
         {
             if (boxOn)
             {
@@ -112,10 +112,12 @@ public class PlayerStageMap : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
+        //ìŠ¤í…Œì´ì§€ ì„ íƒ
         if (collision.gameObject.CompareTag("Stage"))
         {
             stageSelectionBool = true;
         }
+        //ê²Œì„ ì¢…ë£Œ
         if (collision.gameObject.CompareTag("Exit"))
         {
             exitSelectionBool = true;
@@ -123,10 +125,12 @@ public class PlayerStageMap : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        //ìŠ¤í…Œì´ì§€ ì„ íƒ ë²—ì–´ë‚˜ê¸°
         if (collision.gameObject.CompareTag("Stage"))
         {
             stageSelectionBool = false;
         }
+        //ê²Œì„ ì¢…ë£Œ ë²—ì–´ë‚˜ê¸°
         if (collision.gameObject.CompareTag("Exit"))
         {
             exitSelectionBool = false;
