@@ -6,7 +6,7 @@ public class Door : MonoBehaviour
     Animator animator;
     Lock lockscript;
     new Rigidbody2D rigidbody2D;
-    public bool plyerKeycontrolBool;//�÷��̾� ��Ʈ�� ����;
+    public bool plyerKeycontrolBool;//플레이어 컨트롤 여부;
     public bool boolLockOpen;
     public bool uiOnBool;
 
@@ -23,7 +23,7 @@ public class Door : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
-
+        //문에 닿을시 플레이어 조작 금지
         if (lockscript.openDoorAniBool)
         {
             player.keyLeft = false;
@@ -37,6 +37,7 @@ public class Door : MonoBehaviour
             StartCoroutine(ClearUI());
         }
     }
+    //게임 클리어 UI활성화
     IEnumerator ClearUI()
     {
         animator.SetBool("Close", true);
@@ -45,15 +46,16 @@ public class Door : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
+    //문에 플레이어가 닿으면 게임 클리어
         if (collision.gameObject.CompareTag("Player"))
         {
-            
+            //클리어 조건 키를 먹었는지
             if (player.keyOn)
             {
                 gameManager.gameClear = true;
                 gameManager.stageClearUnLock[0] = true;
                 gameManager.regame = false;
-                //lock��ũ��Ʈ����
+                //lock스크립트연동
                 boolLockOpen = true;
                 Debug.Log(boolLockOpen);
             }
